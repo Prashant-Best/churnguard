@@ -1,0 +1,38 @@
+# All tunable settings live here so experiments are reproducible and nothing is hard-coded.
+
+data:
+  url: https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv
+  raw_path: data/raw/telco_churn.csv
+  target: Churn
+  id_column: customerID
+
+split:
+  test_size: 0.2
+  random_state: 42
+
+cv:
+  n_splits: 5
+
+tuning:
+  enabled: true
+  n_trials: 40          # Optuna trials for the XGBoost search
+  timeout_seconds: 600
+
+threshold:
+  # How the decision threshold is chosen on out-of-fold predictions:
+  #   "f1"      -> threshold that maximises F1
+  #   "recall"  -> highest threshold that still reaches min_recall
+  strategy: recall
+  min_recall: 0.75
+
+business:
+  top_fraction: 0.20    # "If we call the riskiest 20% of customers, how many churners do we reach?"
+
+tracking:
+  enabled: true
+  uri: sqlite:///mlflow.db
+  experiment: churnguard
+
+output:
+  model_path: models/churn_model.joblib
+  reports_dir: reports

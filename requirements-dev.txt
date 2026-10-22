@@ -1,0 +1,14 @@
+# Everything for training, notebooks, testing and linting
+-r requirements.txt
+optuna==5.0.0
+mlflow==3.17.2
+matplotlib==3.11.2
+seaborn==0.13.2
+tabulate==0.10.0
+pytest==9.1.1
+httpx==0.28.1
+ruff==0.17.1
+jupyter==1.1.1
+nbconvert==7.17.2
+nbformat==5.11.1
+ipykernel==7.4.0

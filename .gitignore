@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Data: the raw file is downloaded by scripts/download_data.py
+data/raw/*
+!data/raw/.gitkeep
+
+# Experiment tracking (local only)
+mlflow.db
+mlruns/
+mlartifacts/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
